@@ -1,0 +1,35 @@
+name: Video-to-Pose
+
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+    paths-ignore:
+      - 'pose_to_segments/**'
+      - 'text_to_pose/**'
+      - 'pose_to_text/**'
+      - 'text_to_text/**'
+      - 'pose_to_video/**'
+
+
+jobs:
+  test:
+    name: text-to-text
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Requirements
+        run: pip install .[dev]
+
+      - name: Lint Code
+        run: pylint video_to_pose
+
+      - name: Run tests
+        run: pytest video_to_pose

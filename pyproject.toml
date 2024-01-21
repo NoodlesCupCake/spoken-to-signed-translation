@@ -12,6 +12,13 @@ dependencies = [
     "numpy",
     "scipy", # Used for savgol filter
     "simplemma", # Used generally for "simple" text_to_gloss, and in download_lexicon
+    "joeynmt",
+    "sentencepiece",
+    "numpy",
+    "opencv-python",
+    "pose-format",
+    "torch",
+    "tqdm",
     # Optional modules, used in different parts of the pipeline:
     # "spacy", # used for "rules" and "spacylemma" text_to_gloss components
     # "sentencepiece", # used for "nmt" text_to_gloss component
@@ -22,7 +29,15 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "pytest",
-    "pylint"
+    "pylint",
+    "tensorflow",
+    "fonttools",
+    "tensorflow-datasets",
+    "sign-language-datasets",
+    "wandb",
+    "pytorch_lightning",
+    "mediapipe",
+    "scikit-learn",
 ]
 
 [tool.yapf]
@@ -35,7 +50,8 @@ packages = [
     "spoken_to_signed.text_to_gloss",
     "spoken_to_signed.gloss_to_pose",
     "spoken_to_signed.gloss_to_pose.lookup",
-    "spoken_to_signed.pose_to_video"
+    "spoken_to_signed.pose_to_video",
+    "spoken_to_signed.video_to_pose"
 ]
 
 [tool.setuptools.package-data]
@@ -45,6 +61,7 @@ spoken_to_signed = ["*.pth"]
 addopts = "-v"
 testpaths = [
     "spoken_to_signed",
+#    "spoken_to_signed.video_to_pose",
 ]
 
 [project.scripts]
@@ -53,3 +70,4 @@ text_to_gloss = "spoken_to_signed.bin:text_to_gloss"
 #pose_to_video = "spoken_to_signed.bin:pose_to_video"
 text_to_gloss_to_pose = "spoken_to_signed.bin:text_to_gloss_to_pose"
 text_to_gloss_to_pose_to_video = "spoken_to_signed.bin:text_to_gloss_to_pose_to_video"
+video_to_pose = "spoken_to_signed.bin:video_to_pose"
