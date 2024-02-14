@@ -103,5 +103,5 @@ def smooth_concatenate_poses(poses: List[Pose], padding=0.50) -> Pose:
     padding_pose = create_padding(padding, poses[0])
     print('Concatenating...')
     single_pose = concatenate_poses(poses, padding_pose)
-    print('Smoothing...')
+    print('Modified Smoothing...')
     return pose_savgol_filter(single_pose)
