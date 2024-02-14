@@ -112,7 +112,7 @@ def concatenate_poses(poses: List[Pose]) -> Pose:
     poses = [trim_pose(p, i > 0, i < len(poses) - 1) for i, p in enumerate(poses)]
 
     # Concatenate all poses
-    print('Smooth concatenating poses...')
+    print('Modified smooth concatenating poses...')
     pose = smooth_concatenate_poses(poses)
 
     # Correct the wrists (should be after smoothing)
