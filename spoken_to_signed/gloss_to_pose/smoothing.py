@@ -78,7 +78,7 @@ def find_best_connection_point(pose1: Pose, pose2: Pose):
     return len(pose1.body.data) - 1, 0 
 
 
-def smooth_concatenate_poses(poses: List[Pose], padding=0.50) -> Pose:
+def smooth_concatenate_poses(poses: List[Pose], padding=0.70) -> Pose:
     print("This is the modified version of smooth_concatenate_poses.");
     if len(poses) == 0:
         raise Exception("No poses to smooth")
