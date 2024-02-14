@@ -76,6 +76,7 @@ def find_best_connection_point(pose1: Pose, pose2: Pose):
 
     # Since we're using only the last frame of pose1 and the first frame of pose2,
     # the best connection point is at the boundary of pose1 and pose2
+    print("This is the modified version.");
     return len(pose1.body.data) - 1, 0  # Return the indices of the boundary frames
 
 
