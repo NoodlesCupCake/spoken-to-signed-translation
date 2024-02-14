@@ -49,37 +49,37 @@ def concatenate_poses(poses: List[Pose], padding: NumPyPoseBody, interpolation='
     return Pose(header=poses[0].header, body=new_body)
 
 
-def find_best_connection_point(pose1: Pose, pose2: Pose, window=0.3):
-    p1_size = int(len(pose1.body.data) * window)
-    p2_size = int(len(pose2.body.data) * window)
+# def find_best_connection_point(pose1: Pose, pose2: Pose, window=0.3):
+#     p1_size = int(len(pose1.body.data) * window)
+#     p2_size = int(len(pose2.body.data) * window)
 
-    last_data = pose1.body.data[len(pose1.body.data) - p1_size:]
-    first_data = pose2.body.data[:p2_size]
+#     last_data = pose1.body.data[len(pose1.body.data) - p1_size:]
+#     first_data = pose2.body.data[:p2_size]
 
-    last_vectors = last_data.reshape(len(last_data), -1)
-    first_vectors = first_data.reshape(len(first_data), -1)
-
-    distances_matrix = cdist(last_vectors, first_vectors, 'euclidean')
-    min_index = np.unravel_index(np.argmin(distances_matrix, axis=None), distances_matrix.shape)
-    last_index = len(pose1.body.data) - p1_size + min_index[0]
-    return last_index, min_index[1]
-
-# def find_best_connection_point(pose1: Pose, pose2: Pose):
-#     last_data = pose1.body.data[-1] 
-#     first_data = pose2.body.data[0] 
-
-#     last_vectors = last_data.reshape(1, -1) 
-#     first_vectors = first_data.reshape(1, -1) 
+#     last_vectors = last_data.reshape(len(last_data), -1)
+#     first_vectors = first_data.reshape(len(first_data), -1)
 
 #     distances_matrix = cdist(last_vectors, first_vectors, 'euclidean')
 #     min_index = np.unravel_index(np.argmin(distances_matrix, axis=None), distances_matrix.shape)
+#     last_index = len(pose1.body.data) - p1_size + min_index[0]
+#     return last_index, min_index[1]
 
-#     print("This is the modified version.");
-#     return len(pose1.body.data) - 1, 0 
+def find_best_connection_point(pose1: Pose, pose2: Pose):
+    last_data = pose1.body.data[-1] 
+    first_data = pose2.body.data[0] 
+
+    last_vectors = last_data.reshape(1, -1) 
+    first_vectors = first_data.reshape(1, -1) 
+
+    distances_matrix = cdist(last_vectors, first_vectors, 'euclidean')
+    min_index = np.unravel_index(np.argmin(distances_matrix, axis=None), distances_matrix.shape)
+
+    print("This is the modified version of find_best_connection_point.");
+    return len(pose1.body.data) - 1, 0 
 
 
 def smooth_concatenate_poses(poses: List[Pose], padding=0.50) -> Pose:
-    print("This is the modified version.");
+    print("This is the modified version of smooth_concatenate_poses.");
     if len(poses) == 0:
         raise Exception("No poses to smooth")
 
