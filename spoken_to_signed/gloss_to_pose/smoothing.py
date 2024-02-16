@@ -76,7 +76,7 @@ def find_best_connection_point(pose1: Pose, pose2: Pose):
     min_index = np.unravel_index(np.argmin(distances_matrix, axis=None), distances_matrix.shape)
 
     print("This is the modified version of find_best_connection_point.");
-    return len(pose1.body.data) - 1, 0 
+    return len(pose1.body.data) - 1, min_index[1] 
 
 
 def smooth_concatenate_poses(poses: List[Pose], padding=0.30) -> Pose:
