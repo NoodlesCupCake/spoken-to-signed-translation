@@ -75,11 +75,11 @@ def find_best_connection_point(pose1: Pose, pose2: Pose):
     distances_matrix = cdist(last_vectors, first_vectors, 'euclidean')
     min_index = np.unravel_index(np.argmin(distances_matrix, axis=None), distances_matrix.shape)
 
-    print("This is the modified version of find_best_connection_point .");
+    print("This is the modified version of find_best_connection_point.");
     return len(pose1.body.data) - 1, 0 
 
 
-def smooth_concatenate_poses(poses: List[Pose], padding=0.10) -> Pose:
+def smooth_concatenate_poses(poses: List[Pose], padding=0.30) -> Pose:
     print(f"This is the modified version of smooth_concatenate_poses with padding={padding}");
     if len(poses) == 0:
         raise Exception("No poses to smooth")
