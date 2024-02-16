@@ -92,7 +92,7 @@ def find_best_connection_point(pose1: Pose, pose2: Pose):
     distances_matrix = cdist(last_vectors, first_vectors, 'euclidean')
     min_index = np.unravel_index(np.argmin(distances_matrix, axis=None), distances_matrix.shape)
 
-    print("This is the modified version of find_best_connection_point.")
+    print("This is another modified version of find_best_connection_point.")
     return len(pose1.body.data) - 1, min_index[1] 
 
 
