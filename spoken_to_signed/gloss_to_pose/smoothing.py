@@ -48,7 +48,7 @@ def concatenate_poses(poses: List[Pose], padding: NumPyPoseBody, interpolation='
     new_body = new_body.interpolate(kind=interpolation)
     return Pose(header=poses[0].header, body=new_body)
 
-def find_best_connection_point(pose1: Pose, pose2: Pose, end_frame_ratio=0.8):
+def find_best_connection_point(pose1: Pose, pose2: Pose, end_frame_ratio=0.9):
     last_data = pose1.body.data[-1] 
     first_data = pose2.body.data[0] 
 
@@ -61,7 +61,7 @@ def find_best_connection_point(pose1: Pose, pose2: Pose, end_frame_ratio=0.8):
     distances_matrix = cdist(last_vectors, first_vectors, 'euclidean')
     min_index = np.unravel_index(np.argmin(distances_matrix, axis=None), distances_matrix.shape)
 
-    print("This is the modified version of find_best_connection_point.")
+    print(f"This is the modified version of find_best_connection_point with end_frame_ratio of {end_frame_ratio}.")
     return min(end_frame_index, len(pose1.body.data) - 1), min_index[1] 
 
 
